@@ -108,20 +108,18 @@ h2{font-size:clamp(2rem,5.5vw,3.6rem);margin-bottom:24px}
 .chips span{background:rgba(0,0,0,.18);padding:6px 12px;border-radius:999px;font-weight:700;font-size:.8rem}
 
 /* CRITERIA */
-.crit{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
-.c{border-radius:24px;padding:26px;color:#fff}
-.c:nth-child(1){background:var(--orange)} .c:nth-child(2){background:var(--green)}
-.c:nth-child(3){background:var(--pink)} .c:nth-child(4){background:var(--purple)}
-.c h3{font-size:1.15rem;margin-bottom:10px}
-.c h3::before{content:"✦ "}
+.reqs{list-style:none;counter-reset:r;columns:2;column-gap:28px;margin-top:30px}
+.reqs li{counter-increment:r;break-inside:avoid;display:flex;gap:14px;align-items:flex-start;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:12px;font-size:.95rem;font-weight:600}
+.reqs li::before{content:counter(r);flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:#fff;background:var(--orange)}
+.reqs li:nth-child(4n+2)::before{background:var(--green)} .reqs li:nth-child(4n+3)::before{background:var(--pink)} .reqs li:nth-child(4n+4)::before{background:var(--purple)}
 
 /* TIMELINE */
 .timeline{background:var(--soft)}
-.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.tl-item{background:#fff;border-radius:24px;padding:28px;border-top:8px solid var(--green)}
-.tl-item:nth-child(2){border-color:var(--orange)} .tl-item:nth-child(3){border-color:var(--pink)}
-.tl-item .d{font-weight:900;font-size:1.5rem;line-height:1.05}
-.tl-item .k{font-weight:800;letter-spacing:.15em;font-size:.8rem;color:var(--purple);margin:10px 0 6px}
+.tl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:30px}
+.tl-item{background:#fff;border-radius:24px;padding:24px 20px;border-top:8px solid var(--green)}
+.tl-item:nth-child(2){border-color:var(--orange)} .tl-item:nth-child(3){border-color:var(--pink)} .tl-item:nth-child(4){border-color:var(--purple)} .tl-item:nth-child(5){border-color:var(--orange)}
+.tl-item .d{font-weight:900;font-size:1.3rem;line-height:1.1}
+.tl-item .k{font-weight:800;letter-spacing:.1em;font-size:.75rem;color:var(--purple);margin:10px 0 6px}
 .tl-item p{color:var(--muted);font-size:.92rem}
 
 /* FORM */
@@ -172,8 +170,9 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
   .hero-img{width:100%;margin-right:0}
   .hero-grid,.about-grid,.prize-grid{grid-template-columns:1fr}
   .about-grid > .about-img{order:2}
-  .steps,.crit{grid-template-columns:1fr 1fr}
-  .tl{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .tl{grid-template-columns:1fr 1fr}
+  .reqs{columns:1}
 }
 .sticky-cta{display:none;position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;transition:transform .3s,opacity .3s}
 .sticky-cta .btn{box-shadow:0 8px 24px rgba(0,0,0,.25)}
@@ -183,7 +182,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
   .wrap{padding:0 16px}
   h2{margin-bottom:18px}
   .btn{width:100%;justify-content:center;padding:16px 24px}
-  .grid2,.prizes-mini,.crit{grid-template-columns:1fr}
+  .grid2,.prizes-mini,.tl{grid-template-columns:1fr}
   .ph{min-height:200px;border-radius:20px}
 
   /* Hero: cinta arriba del logo, no encima */
@@ -211,7 +210,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
 
   .prize{padding:24px;border-radius:24px}
   .prize .item{font-size:2rem}
-  .c{padding:20px}
+  .reqs li{padding:12px 14px;font-size:.9rem}
   .tl-item{padding:22px}
   .places span{font-size:.8rem;padding:8px 14px}
   .big-quote{font-size:1.2rem}
@@ -249,7 +248,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
           <div class="pm b"><img src="img/pm-kit.webp" alt="" width="360" height="235"><b>Kit audiovisual</b><span>Para el video más viral, elegido por el público.</span></div>
         </div>
         <a href="#inscripcion" class="btn">Quiero participar ♥</a>
-        <p class="dates-note">Inscripciones abiertas del 8 al 15 de octubre</p>
+        <p class="dates-note">Inscripciones abiertas del 8 de octubre al 7 de noviembre</p>
       </div>
       <img class="hero-img rv" src="img/hero.webp" alt="Una joven y un joven de Quevedo grabándose con su celular y un micrófono pequeño, reportando desde su ciudad" width="1200" height="1025" fetchpriority="high">
     </div>
@@ -317,29 +316,38 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
   </div>
 </section>
 
-<!-- 05 CRITERIOS -->
+<!-- 05 REQUISITOS -->
 <section>
   <div class="wrap">
-    <p class="eyebrow rv">¿Qué vamos a evaluar?</p>
-    <h2 class="rv">No tienes que ser un experto.<br><span class="g">Tienes que ser creativo.</span></h2>
-    <div class="crit">
-      <div class="c rv"><h3>Creatividad</h3><p>Una idea original y una forma diferente de contarla.</p></div>
-      <div class="c rv"><h3>Edición</h3><p>Ritmo, cortes, música, textos y recursos que hagan atractivo tu video.</p></div>
-      <div class="c rv"><h3>Desenvolvimiento</h3><p>Naturalidad, personalidad y capacidad para transmitir tu mensaje.</p></div>
-      <div class="c rv"><h3>Impacto</h3><p>Que la historia genere interés y conecte con quienes la ven.</p></div>
-    </div>
+    <p class="eyebrow rv">Requisitos para participar</p>
+    <h2 class="rv">Antes de <span class="o">grabar</span>, revisa esto</h2>
+    <ol class="reqs">
+      <li class="rv">Ser residente del cantón Quevedo.</li>
+      <li class="rv">Tener mínimo 16 años. Los menores de 18 años deberán contar con la autorización de su padre, madre o representante legal.</li>
+      <li class="rv">Grabar un video vertical de máximo 90 segundos.</li>
+      <li class="rv">Mostrar una historia, personaje, emprendimiento, tradición o lugar especial de Quevedo.</li>
+      <li class="rv">Publicar el video en una cuenta pública de TikTok.</li>
+      <li class="rv">Incluir el hashtag oficial <b>#QuevedoComienzaConUno</b>.</li>
+      <li class="rv">Completar el formulario de inscripción con nombres, edad, sector, teléfono y usuario de TikTok.</li>
+      <li class="rv">Pegar el enlace del video publicado en TikTok dentro del formulario de inscripción.</li>
+      <li class="rv">Presentar contenido original, creativo y grabado por el participante.</li>
+      <li class="rv">Autorizar el uso del video para la difusión del concurso.</li>
+      <li class="rv">Cada participante podrá inscribir un solo video.</li>
+    </ol>
   </div>
 </section>
 
 <!-- 06 FECHAS -->
-<section class="timeline" hidden>
+<section class="timeline">
   <div class="wrap">
-    <p class="eyebrow rv">📅 Marca estas fechas</p>
-    <h2 class="rv">Fechas <span class="o">clave</span></h2>
+    <p class="eyebrow rv">📅 Cronograma</p>
+    <h2 class="rv">Marca estas <span class="o">fechas</span></h2>
     <div class="tl">
-      <div class="tl-item rv"><div class="d">8 — 15<br>octubre</div><div class="k">INSCRIPCIONES</div><p>Envía tus datos y el enlace de tu video.</p></div>
-      <div class="tl-item rv"><div class="d">15 oct —<br>10 nov</div><div class="k">SELECCIÓN</div><p>Revisión y selección de los videos participantes.</p></div>
-      <div class="tl-item rv"><div class="d">13<br>noviembre</div><div class="k">PREMIACIÓN 🏆</div><p>Conoceremos a los dos ganadores.</p></div>
+      <div class="tl-item rv"><div class="d">8 de<br>octubre</div><div class="k">INICIO DE INSCRIPCIONES</div><p>Graba tu video, súbelo a TikTok y regístrate.</p></div>
+      <div class="tl-item rv"><div class="d">7 de<br>noviembre</div><div class="k">CIERRE DE INSCRIPCIONES</div><p>Último día para enviar tus datos y el enlace de tu video.</p></div>
+      <div class="tl-item rv"><div class="d">8 al 10 de<br>noviembre</div><div class="k">EVALUACIÓN Y SELECCIÓN</div><p>Revisión de todos los videos participantes.</p></div>
+      <div class="tl-item rv"><div class="d">11 de<br>noviembre</div><div class="k">12 FINALISTAS</div><p>Anunciamos a los 12 finalistas.</p></div>
+      <div class="tl-item rv"><div class="d">13 de<br>noviembre</div><div class="k">PREMIACIÓN 🏆</div><p>Conoceremos a los dos ganadores.</p></div>
     </div>
   </div>
 </section>
