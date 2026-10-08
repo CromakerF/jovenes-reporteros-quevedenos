@@ -45,12 +45,14 @@ h2{font-size:clamp(2rem,5.5vw,3.6rem);margin-bottom:24px}
 .hero .lead{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:22px 0 10px}
 .hero .lead em{font-style:normal;color:var(--pink)}
 .hero p.sub{color:var(--muted);max-width:52ch;margin-bottom:28px}
-.prizes-mini{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0 30px}
+.prizes-mini{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:16px;margin:40px 0 30px}
 .pm{border-radius:18px;padding:16px 14px 16px 120px;color:#fff;position:relative;min-height:112px}
 /* Producto que "sale" de la tarjeta por arriba y por la izquierda */
 .pm img{position:absolute;pointer-events:none;filter:drop-shadow(0 10px 12px rgba(0,0,0,.3))}
-.pm.a img{height:172px;width:auto;left:-16px;bottom:-8px;transform:rotate(-8deg)}
-.pm.b img{width:152px;height:auto;left:-34px;bottom:-12px}
+.pm.a{padding-left:108px}
+.pm.a img{height:160px;width:auto;left:-14px;bottom:-8px;transform:rotate(-8deg)}
+.pm.b{padding-left:162px}
+.pm.b img{width:190px;height:auto;left:-34px;bottom:-14px}
 .pm b{display:block;font-weight:900;font-size:1.05rem;line-height:1.1;text-transform:uppercase;margin-bottom:4px}
 .pm span{display:block;font-size:.82rem;line-height:1.35;opacity:.95}
 .pm.a{background:var(--green)} .pm.b{background:var(--pink)}
@@ -168,8 +170,10 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
   .hero .lead{font-size:1.25rem;margin:16px 0 8px}
   .prizes-mini{gap:30px;margin:44px 0 24px}
   .pm{padding:16px 16px 16px 132px}
-  .pm.a img{left:-4px}
-  .pm.b img{left:-12px;width:136px}
+  .pm.a{padding-left:132px}
+  .pm.a img{left:-4px;height:172px}
+  .pm.b{padding-left:172px}
+  .pm.b img{left:-10px;width:176px}
   .dates-note{text-align:center}
   .hero-bottom{height:70px}
 
