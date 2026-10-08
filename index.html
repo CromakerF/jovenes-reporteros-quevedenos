@@ -355,6 +355,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
 </footer>
 
 <iframe name="gf_target" hidden></iframe>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
 
 <script>
 /* ===== CONFIGURACIÓN GOOGLE FORMS =====
@@ -407,6 +408,7 @@ f.addEventListener('submit', e => {
   f.style.display = 'none';
   document.getElementById('ok').classList.add('on');
   document.getElementById('inscripcion').scrollIntoView();
+  celebrate();
 });
 
 // Botón fijo: aparece tras el hero, se oculta en el formulario
@@ -415,6 +417,17 @@ let pastHero = false, atForm = false;
 const upd = () => sticky.classList.toggle('hide', !pastHero || atForm);
 new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; upd(); }).observe(document.querySelector('.hero .btn'));
 new IntersectionObserver(([e]) => { atForm = e.isIntersecting; upd(); }).observe(document.getElementById('inscripcion'));
+
+// Confeti con los colores de la fundación
+function celebrate() {
+  if (!window.confetti) return;
+  const o = { colors:['#2a8a2e','#e8641c','#ff5aa5','#6b5ba8','#ffffff'], disableForReducedMotion:true };
+  confetti({ ...o, particleCount:160, spread:100, startVelocity:45, origin:{ y:.6 } });
+  setTimeout(() => {
+    confetti({ ...o, particleCount:70, angle:60, spread:70, origin:{ x:0, y:.7 } });
+    confetti({ ...o, particleCount:70, angle:120, spread:70, origin:{ x:1, y:.7 } });
+  }, 250);
+}
 
 // Animación al hacer scroll
 const io = new IntersectionObserver(es => es.forEach(x => {
