@@ -114,9 +114,10 @@ h2{font-size:clamp(2rem,5.5vw,3.6rem);margin-bottom:24px}
 .reqs li:nth-child(4n+2)::before{background:var(--green)} .reqs li:nth-child(4n+3)::before{background:var(--pink)} .reqs li:nth-child(4n+4)::before{background:var(--purple)}
 
 /* TIMELINE */
-.timeline{background:var(--soft)}
+.timeline{background:#fff}
+.requisitos{background:#fff0f6}
 .tl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:30px}
-.tl-item{background:#fff;border-radius:24px;padding:24px 20px;border-top:8px solid var(--green)}
+.tl-item{background:#fff;border-radius:24px;padding:24px 20px;border:2px solid var(--line);border-top:8px solid var(--green)}
 .tl-item:nth-child(2){border-color:var(--orange)} .tl-item:nth-child(3){border-color:var(--pink)} .tl-item:nth-child(4){border-color:var(--purple)} .tl-item:nth-child(5){border-color:var(--orange)}
 .tl-item .d{font-weight:900;font-size:1.3rem;line-height:1.1}
 .tl-item .k{font-weight:800;letter-spacing:.1em;font-size:.75rem;color:var(--purple);margin:10px 0 6px}
@@ -317,7 +318,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
 </section>
 
 <!-- 05 REQUISITOS -->
-<section>
+<section class="requisitos">
   <div class="wrap">
     <p class="eyebrow rv">Requisitos para participar</p>
     <h2 class="rv">Antes de <span class="o">grabar</span>, revisa esto</h2>
