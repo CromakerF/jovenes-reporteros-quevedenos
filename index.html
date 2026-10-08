@@ -370,13 +370,14 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
 
         <div class="grid2">
           <div class="field full"><label class="lb" for="nombre">Nombres y apellidos <i>*</i></label><input id="nombre" name="nombre" type="text" required autocomplete="name"></div>
+          <div class="field"><label class="lb" for="cedula">Cédula <i>*</i></label><input id="cedula" name="cedula" type="text" required inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10 dígitos" title="La cédula debe tener 10 dígitos"></div>
           <div class="field"><label class="lb" for="edad">Edad <i>*</i></label><input id="edad" name="edad" type="number" min="16" max="99" required inputmode="numeric"></div>
           <p class="minor-note" id="minorNote" role="alert"><b>⚠️ Eres menor de edad.</b> Luego de registrarte, tu representante legal debe enviar una carta de autorización por WhatsApp para concretar tu participación.</p>
           <div class="field"><label class="lb" for="telefono">Número de teléfono <i>*</i></label><input id="telefono" name="telefono" type="tel" required autocomplete="tel" placeholder="09XXXXXXXX" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" title="El número debe tener 10 dígitos, por ejemplo 0991234567"></div>
           <div class="field"><label class="lb" for="correo">Correo electrónico <i>*</i></label><input id="correo" name="correo" type="email" required autocomplete="email"></div>
           <div class="field"><label class="lb" for="sector">Sector o parroquia <i>*</i></label><input id="sector" name="sector" type="text" required></div>
           <div class="field"><label class="lb" for="tiktok">Usuario de TikTok <i>*</i></label><input id="tiktok" name="tiktok" type="text" required placeholder="@tuusuario"></div>
-          <div class="field"><label class="lb" for="video">Enlace del video <i>*</i></label><input id="video" name="video" type="url" required placeholder="https://www.tiktok.com/@..."></div>
+          <div class="field full"><label class="lb" for="video">Enlace del video <i>*</i></label><input id="video" name="video" type="url" required placeholder="https://www.tiktok.com/@..."></div>
           <div class="field full">
             <label class="check"><input type="checkbox" id="leido" required> <span>He leído y acepto los <button type="button" class="link-btn" id="openReq">Requisitos para participar</button>. <i style="color:var(--orange);font-style:normal">*</i></span></label>
           </div>
@@ -444,6 +445,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
 const GOOGLE_FORM_ID = '1FAIpQLSdPm4LzqA2tcWp1EbTFfvWc9NNruw4wTi6GGf_BU1dMTB2mjA';
 const ENTRIES = {
   nombre:      'entry.2005620554',
+  cedula:      'entry.1123509570',
   edad:        'entry.1045781291',
   telefono:    'entry.1065046570',
   correo:      'entry.1166974658',
@@ -464,6 +466,22 @@ const tel = document.getElementById('telefono');
 tel.addEventListener('input', () => {
   tel.value = tel.value.replace(/\D/g, '').slice(0, 10);
   tel.setCustomValidity(tel.value.length === 10 || !tel.value ? '' : 'El número debe tener 10 dígitos (te faltan ' + (10 - tel.value.length) + ').');
+});
+
+// Cédula ecuatoriana: 10 dígitos + dígito verificador (módulo 10)
+function cedulaValida(c) {
+  if (!/^\d{10}$/.test(c)) return false;
+  const prov = +c.slice(0, 2);
+  if (!((prov >= 1 && prov <= 24) || prov === 30) || +c[2] > 5) return false;
+  let sum = 0;
+  for (let i = 0; i < 9; i++) { let v = +c[i] * (i % 2 ? 1 : 2); sum += v > 9 ? v - 9 : v; }
+  return (10 - sum % 10) % 10 === +c[9];
+}
+const ced = document.getElementById('cedula');
+ced.addEventListener('input', () => {
+  ced.value = ced.value.replace(/\D/g, '').slice(0, 10);
+  ced.setCustomValidity(!ced.value || cedulaValida(ced.value) ? '' :
+    ced.value.length < 10 ? 'La cédula debe tener 10 dígitos (te faltan ' + (10 - ced.value.length) + ').' : 'Esta cédula no es válida. Revisa los números.');
 });
 
 // Requisitos: ventana + botón Enviar gris hasta marcar ambas casillas
