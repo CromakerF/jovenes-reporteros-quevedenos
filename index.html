@@ -117,9 +117,6 @@ input:focus,select:focus{outline:none;border-color:var(--orange);background:#fff
 input:user-invalid,select:user-invalid{border-color:#d93030}
 .check{display:flex;gap:12px;align-items:flex-start;font-size:.92rem;cursor:pointer}
 .check input{accent-color:var(--green);width:20px;height:20px;margin-top:2px;flex:none}
-.minor{grid-column:1/-1;display:none;background:var(--soft);border-radius:18px;padding:20px;border:2px dashed var(--orange)}
-.minor.on{display:grid;gap:14px}
-.minor h4{font-weight:900;text-transform:uppercase;font-size:.9rem;color:var(--orange)}
 .submit-row{grid-column:1/-1;text-align:center;margin-top:12px}
 .ok{display:none;text-align:center;padding:30px 0}
 .ok.on{display:block}
@@ -325,17 +322,6 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
           <div class="field"><label class="lb" for="sector">Sector o parroquia <i>*</i></label><input id="sector" name="sector" type="text" required></div>
           <div class="field"><label class="lb" for="tiktok">Usuario de TikTok <i>*</i></label><input id="tiktok" name="tiktok" type="text" required placeholder="@tuusuario"></div>
           <div class="field"><label class="lb" for="video">Enlace del video <i>*</i></label><input id="video" name="video" type="url" required placeholder="https://www.tiktok.com/@..."></div>
-
-
-          <div class="minor" id="minor">
-            <h4>Eres menor de edad: autorización del representante</h4>
-            <div class="grid2">
-              <div class="field"><label class="lb" for="rep_nombre">Nombre del representante <i>*</i></label><input id="rep_nombre" name="rep_nombre" type="text"></div>
-              <div class="field"><label class="lb" for="rep_cedula">Cédula del representante <i>*</i></label><input id="rep_cedula" name="rep_cedula" type="text" inputmode="numeric" pattern="[0-9]{10}" placeholder="10 dígitos"></div>
-            </div>
-            <label class="check"><input type="checkbox" id="rep_auth" name="rep_auth" value="Sí"> Como representante legal, autorizo la participación del menor en el concurso.</label>
-          </div>
-
           <div class="field full">
             <label class="check"><input type="checkbox" name="autorizacion" value="Sí" required> Autorizo a la Fundación Jhoa Chong Qui a republicar mi contenido dentro de la comunicación del concurso. <i style="color:var(--orange);font-style:normal">*</i></label>
           </div>
@@ -381,22 +367,9 @@ const ENTRIES = {
   tiktok:      'entry.0000000006',
   video:       'entry.0000000008',
   autorizacion:'entry.0000000009',
-  rep_nombre:  'entry.0000000010',
-  rep_cedula:  'entry.0000000011',
-  rep_auth:    'entry.0000000012',
 };
 
 const f = document.getElementById('f');
-const minor = document.getElementById('minor');
-const edad = document.getElementById('edad');
-const repFields = ['rep_nombre','rep_cedula','rep_auth'].map(id => document.getElementById(id));
-
-edad.addEventListener('input', () => {
-  const isMinor = edad.value !== '' && +edad.value < 18;
-  minor.classList.toggle('on', isMinor);
-  repFields.forEach(el => el.required = isMinor);
-});
-
 f.addEventListener('submit', e => {
   e.preventDefault();
   const err = document.getElementById('err');
