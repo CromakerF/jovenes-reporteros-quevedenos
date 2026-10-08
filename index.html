@@ -45,10 +45,14 @@ h2{font-size:clamp(2rem,5.5vw,3.6rem);margin-bottom:24px}
 .hero .lead{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:22px 0 10px}
 .hero .lead em{font-style:normal;color:var(--pink)}
 .hero p.sub{color:var(--muted);max-width:52ch;margin-bottom:28px}
-.prizes-mini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px}
-.pm{border-radius:18px;padding:16px;color:#fff}
-.pm b{display:block;font-weight:900;font-size:1.15rem;text-transform:uppercase}
-.pm span{font-size:.85rem;opacity:.95}
+.prizes-mini{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0 30px}
+.pm{border-radius:18px;padding:16px 14px 16px 104px;color:#fff;position:relative;min-height:112px}
+/* Producto que "sale" de la tarjeta por arriba y por la izquierda */
+.pm img{position:absolute;pointer-events:none;filter:drop-shadow(0 10px 12px rgba(0,0,0,.3))}
+.pm.a img{height:150px;width:auto;left:-14px;bottom:-4px;transform:rotate(-8deg)}
+.pm.b img{width:128px;height:auto;left:-22px;bottom:-8px}
+.pm b{display:block;font-weight:900;font-size:1.05rem;line-height:1.1;text-transform:uppercase;margin-bottom:4px}
+.pm span{display:block;font-size:.82rem;line-height:1.35;opacity:.95}
 .pm.a{background:var(--green)} .pm.b{background:var(--pink)}
 .badge{display:inline-block;font-weight:900;letter-spacing:.12em;font-size:.8rem;background:var(--purple);color:#fff;padding:8px 14px;border-radius:999px;margin-bottom:18px}
 .dates-note{margin-top:22px;font-weight:700;font-size:.9rem;color:var(--green-dk)}
@@ -162,8 +166,8 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
   .hero-grid{margin-top:28px;gap:28px}
   .hero h1{font-size:clamp(2.3rem,12vw,3.2rem)}
   .hero .lead{font-size:1.25rem;margin:16px 0 8px}
-  .prizes-mini{gap:10px;margin-bottom:24px}
-  .pm{padding:14px 16px;display:flex;flex-direction:column}
+  .prizes-mini{gap:30px;margin:44px 0 24px}
+  .pm{padding:16px 16px 16px 116px}
   .dates-note{text-align:center}
   .hero-bottom{height:70px}
 
@@ -210,8 +214,8 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
         <p class="lead">Tu comunidad tiene una historia.<br><em>Tú puedes contarla.</em></p>
         <p class="sub">Graba un video sobre una situación, historia o realidad de tu comunidad, sector, parroquia o recinto y participa por increíbles premios.</p>
         <div class="prizes-mini">
-          <div class="pm a"><b>📱 iPhone</b><span>Para el video más creativo, elegido por nuestro jurado.</span></div>
-          <div class="pm b"><b>🎥 Kit audiovisual</b><span>Para el video más viral, elegido por el público.</span></div>
+          <div class="pm a"><img src="img/pm-iphone.webp" alt="" width="257" height="380"><b>iPhone</b><span>Para el video más creativo, elegido por nuestro jurado.</span></div>
+          <div class="pm b"><img src="img/pm-kit.webp" alt="" width="360" height="235"><b>Kit audiovisual</b><span>Para el video más viral, elegido por el público.</span></div>
         </div>
         <a href="#inscripcion" class="btn">Quiero participar ♥</a>
         <p class="dates-note">Inscripciones abiertas del 8 al 15 de octubre</p>
