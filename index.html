@@ -28,6 +28,7 @@ h2{font-size:clamp(2rem,5.5vw,3.6rem);margin-bottom:24px}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;padding:18px 34px;border-radius:999px;border:0;font-size:1rem;cursor:pointer;box-shadow:0 10px 0 -2px var(--green);transition:transform .15s,box-shadow .15s;font-family:inherit}
 .btn:hover{transform:translateY(-3px);box-shadow:0 13px 0 -2px var(--green)}
 .btn:active{transform:translateY(2px);box-shadow:0 6px 0 -2px var(--green)}
+.btn:disabled{background:#c9c9c9;box-shadow:0 10px 0 -2px #a9a9a9;cursor:not-allowed;transform:none}
 
 /* Image placeholders — reemplazar por <img> */
 .ph{background:repeating-linear-gradient(45deg,#fdeee4 0 14px,#fff6f0 14px 28px);border:2px dashed #f2b48f;border-radius:24px;display:grid;place-items:center;color:#c06a38;font-weight:700;font-size:.85rem;text-align:center;padding:16px;min-height:220px}
@@ -127,6 +128,17 @@ input:focus,select:focus{outline:none;border-color:var(--orange);background:#fff
 input:user-invalid,select:user-invalid{border-color:#d93030}
 .check{display:flex;gap:12px;align-items:flex-start;font-size:.92rem;cursor:pointer}
 .check input{accent-color:var(--green);width:20px;height:20px;margin-top:2px;flex:none}
+.link-btn{background:none;border:0;padding:0;font:inherit;font-weight:800;color:var(--purple);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.req-dialog{border:0;border-radius:24px;padding:0;width:min(560px,calc(100% - 32px));max-height:calc(100% - 48px);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.req-dialog::backdrop{background:rgba(20,20,20,.6)}
+.req-body{padding:28px 24px 8px;overflow:auto}
+.req-body h3{font-size:1.5rem;margin-bottom:16px}
+.req-body ol{padding-left:22px;display:grid;gap:10px;font-size:.95rem}
+.req-body li::marker{font-weight:900;color:var(--orange)}
+.req-actions{position:sticky;bottom:0;background:#fff;padding:16px 24px 24px;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;border-top:1px solid var(--line)}
+.req-actions .btn{padding:14px 22px;font-size:.9rem}
+.btn-ghost{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:none}
+.btn-ghost:hover{box-shadow:none}
 .submit-row{grid-column:1/-1;text-align:center;margin-top:12px}
 .minor-note{grid-column:1/-1;display:none;background:var(--soft);border:2px solid var(--orange);border-radius:16px;padding:14px 16px;font-size:.92rem;font-weight:600}
 .minor-note.on{display:block}
@@ -331,7 +343,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
 
         <div class="grid2">
           <div class="field full"><label class="lb" for="nombre">Nombres y apellidos <i>*</i></label><input id="nombre" name="nombre" type="text" required autocomplete="name"></div>
-          <div class="field"><label class="lb" for="edad">Edad <i>*</i></label><input id="edad" name="edad" type="number" min="10" max="99" required inputmode="numeric"></div>
+          <div class="field"><label class="lb" for="edad">Edad <i>*</i></label><input id="edad" name="edad" type="number" min="16" max="99" required inputmode="numeric"></div>
           <p class="minor-note" id="minorNote" role="alert"><b>⚠️ Eres menor de edad.</b> Luego de registrarte, tu representante legal debe enviar una carta de autorización por WhatsApp para concretar tu participación.</p>
           <div class="field"><label class="lb" for="telefono">Número de teléfono <i>*</i></label><input id="telefono" name="telefono" type="tel" required autocomplete="tel" placeholder="09XXXXXXXX" pattern="[0-9+ ]{7,15}"></div>
           <div class="field"><label class="lb" for="correo">Correo electrónico <i>*</i></label><input id="correo" name="correo" type="email" required autocomplete="email"></div>
@@ -339,11 +351,14 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
           <div class="field"><label class="lb" for="tiktok">Usuario de TikTok <i>*</i></label><input id="tiktok" name="tiktok" type="text" required placeholder="@tuusuario"></div>
           <div class="field"><label class="lb" for="video">Enlace del video <i>*</i></label><input id="video" name="video" type="url" required placeholder="https://www.tiktok.com/@..."></div>
           <div class="field full">
+            <label class="check"><input type="checkbox" id="leido" required> <span>He leído y acepto los <button type="button" class="link-btn" id="openReq">Requisitos para participar</button>. <i style="color:var(--orange);font-style:normal">*</i></span></label>
+          </div>
+          <div class="field full">
             <label class="check"><input type="checkbox" name="autorizacion" value="Sí" required> Autorizo a la Fundación Jhoa Chong Qui a republicar mi contenido dentro de la comunicación del concurso. <i style="color:var(--orange);font-style:normal">*</i></label>
           </div>
 
           <div class="submit-row">
-            <button class="btn" type="submit" id="send">Enviar inscripción ♥</button>
+            <button class="btn" type="submit" id="send" disabled>Enviar inscripción ♥</button>
             <p class="err" id="err">Revisa los campos marcados en rojo.</p>
           </div>
         </div>
@@ -358,6 +373,30 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
     </div>
   </div>
 </section>
+
+<dialog class="req-dialog" id="req" aria-labelledby="reqTitle">
+  <div class="req-body">
+    <p class="eyebrow">Concurso Jóvenes Reporteros Quevedeños</p>
+    <h3 id="reqTitle">Requisitos para participar</h3>
+    <ol>
+      <li>Ser residente del cantón Quevedo.</li>
+      <li>Tener mínimo 16 años. Los menores de 18 años deberán contar con la autorización de su padre, madre o representante legal.</li>
+      <li>Grabar un video vertical de máximo 90 segundos.</li>
+      <li>Mostrar una historia, personaje, emprendimiento, tradición o lugar especial de Quevedo.</li>
+      <li>Publicar el video en una cuenta pública de TikTok.</li>
+      <li>Incluir el hashtag oficial <b>#QuevedoComienzaConUno</b>.</li>
+      <li>Completar el formulario de inscripción con nombres, edad, sector, teléfono y usuario de TikTok.</li>
+      <li>Pegar el enlace del video publicado en TikTok dentro del formulario de inscripción.</li>
+      <li>Presentar contenido original, creativo y grabado por el participante.</li>
+      <li>Autorizar el uso del video para la difusión del concurso.</li>
+      <li>Cada participante podrá inscribir un solo video.</li>
+    </ol>
+  </div>
+  <div class="req-actions">
+    <button type="button" class="btn btn-ghost" id="closeReq">Cerrar</button>
+    <button type="button" class="btn" id="acceptReq">Acepto los requisitos</button>
+  </div>
+</dialog>
 
 <div class="sticky-cta hide" id="sticky"><a href="#inscripcion" class="btn">Quiero participar ♥</a></div>
 
@@ -392,6 +431,18 @@ const f = document.getElementById('f');
 const edad = document.getElementById('edad');
 const isMinor = () => edad.value !== '' && +edad.value < 18;
 edad.addEventListener('input', () => document.getElementById('minorNote').classList.toggle('on', isMinor()));
+
+// Requisitos: ventana + botón Enviar gris hasta marcar ambas casillas
+const req = document.getElementById('req');
+const leido = document.getElementById('leido');
+const auth = f.querySelector('[name=autorizacion]');
+const send = document.getElementById('send');
+const updSend = () => send.disabled = !(leido.checked && auth.checked);
+[leido, auth].forEach(c => c.addEventListener('change', updSend));
+document.getElementById('openReq').addEventListener('click', e => { e.preventDefault(); req.showModal(); });
+document.getElementById('closeReq').addEventListener('click', () => req.close());
+document.getElementById('acceptReq').addEventListener('click', () => { leido.checked = true; updSend(); req.close(); });
+req.addEventListener('click', e => { if (e.target === req) req.close(); });
 
 f.addEventListener('submit', e => {
   e.preventDefault();
