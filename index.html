@@ -76,7 +76,7 @@ h2{font-size:clamp(2rem,5.5vw,3.6rem);margin-bottom:24px}
 .step .n{font-weight:900;font-size:2.8rem;color:var(--green);line-height:1}
 .step h3{font-size:1.05rem;margin:12px 0 8px}
 .step p{color:var(--muted);font-size:.92rem}
-.step .ph{min-height:120px;margin-bottom:16px;border-radius:16px}
+.step-icon{width:112px;height:112px;margin-bottom:12px}
 
 /* PRIZES */
 .prizes{background:var(--ink);color:#fff;overflow:hidden}
@@ -180,7 +180,7 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
   /* Pasos: ícono a la izquierda, texto a la derecha */
   .steps{grid-template-columns:1fr;gap:12px;margin:20px 0 30px}
   .step{display:grid;grid-template-columns:76px 1fr;column-gap:16px;align-items:start;padding:18px}
-  .step .ph{grid-row:1/4;min-height:76px;height:76px;margin:0;font-size:.65rem;padding:4px}
+  .step-icon{grid-row:1/4;width:76px;height:76px;margin:0}
   .step .n{font-size:1.6rem}
   .step h3{margin:4px 0 4px}
 
@@ -256,10 +256,10 @@ footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert
     <p class="eyebrow rv">¿Cómo participar?</p>
     <h2 class="rv">Es muy <span class="p">fácil</span></h2>
     <div class="steps">
-      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">01</div><h3>Encuentra una historia</h3><p>Identifica una situación real de tu comunidad que merezca ser conocida.</p></div>
-      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">02</div><h3>Graba tu video</h3><p>Cuéntala con creatividad, personalidad y tu propio estilo.</p></div>
-      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">03</div><h3>Inscríbete</h3><p>Completa tus datos y envía el enlace de tu video.</p></div>
-      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">04</div><h3>Participa</h3><p>Tu video podrá llegar a la selección final y competir por uno de los dos premios.</p></div>
+      <div class="step rv"><img class="step-icon" src="img/paso1.webp" alt="Lupa sobre una casa" width="256" height="256" loading="lazy"><div class="n">01</div><h3>Encuentra una historia</h3><p>Identifica una situación real de tu comunidad que merezca ser conocida.</p></div>
+      <div class="step rv"><img class="step-icon" src="img/paso2.webp" alt="Celular grabando en un trípode" width="256" height="256" loading="lazy"><div class="n">02</div><h3>Graba tu video</h3><p>Cuéntala con creatividad, personalidad y tu propio estilo.</p></div>
+      <div class="step rv"><img class="step-icon" src="img/paso3.webp" alt="Formulario con un visto" width="256" height="256" loading="lazy"><div class="n">03</div><h3>Inscríbete</h3><p>Completa tus datos y envía el enlace de tu video.</p></div>
+      <div class="step rv"><img class="step-icon" src="img/paso4.webp" alt="Trofeo con botón de play" width="256" height="256" loading="lazy"><div class="n">04</div><h3>Participa</h3><p>Tu video podrá llegar a la selección final y competir por uno de los dos premios.</p></div>
     </div>
     <div style="text-align:center"><a href="#inscripcion" class="btn">Inscribirme</a></div>
   </div>
