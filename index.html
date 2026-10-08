@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jóvenes Reporteros Quevedeños</title>
+<meta name="description" content="Graba un video sobre tu comunidad y gana un iPhone o un kit audiovisual. Fundación Jhoa Chong Qui.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#2a8a2e; --green-dk:#1f6b22; --orange:#e8641c; --pink:#ff5aa5; --purple:#6b5ba8;
+  --ink:#141414; --muted:#5b5b5b; --bg:#ffffff; --soft:#fff6f0; --line:#ececec;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Montserrat,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:88px 0;position:relative}
+.eyebrow{font-weight:800;font-size:.8rem;letter-spacing:.2em;color:var(--purple);text-transform:uppercase;margin-bottom:12px}
+h1,h2,h3{font-weight:900;line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,5.5vw,3.6rem);margin-bottom:24px}
+.script{font-family:"Dancing Script",cursive;text-transform:none;font-weight:700}
+.g{color:var(--green)} .o{color:var(--orange)} .p{color:var(--pink)}
+.tag{display:inline-block;background:var(--orange);color:#fff;padding:.05em .25em .1em;transform:rotate(-2deg)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;padding:18px 34px;border-radius:999px;border:0;font-size:1rem;cursor:pointer;box-shadow:0 10px 0 -2px var(--green);transition:transform .15s,box-shadow .15s;font-family:inherit}
+.btn:hover{transform:translateY(-3px);box-shadow:0 13px 0 -2px var(--green)}
+.btn:active{transform:translateY(2px);box-shadow:0 6px 0 -2px var(--green)}
+
+/* Image placeholders — reemplazar por <img> */
+.ph{background:repeating-linear-gradient(45deg,#fdeee4 0 14px,#fff6f0 14px 28px);border:2px dashed #f2b48f;border-radius:24px;display:grid;place-items:center;color:#c06a38;font-weight:700;font-size:.85rem;text-align:center;padding:16px;min-height:220px}
+
+/* Ribbons */
+.ribbon{position:absolute;left:0;width:100%;height:100px;pointer-events:none}
+
+/* HERO */
+.hero{padding:82px 0 140px;overflow:hidden}
+.brand{display:flex;flex-direction:column;align-items:flex-start}
+.brand img{width:260px;height:auto}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;margin-top:40px;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,8vw,5.6rem)}
+.hero h1 .l2{color:var(--green);display:block}
+.hero .lead{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:22px 0 10px}
+.hero .lead em{font-style:normal;color:var(--pink)}
+.hero p.sub{color:var(--muted);max-width:52ch;margin-bottom:28px}
+.prizes-mini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px}
+.pm{border-radius:18px;padding:16px;color:#fff}
+.pm b{display:block;font-weight:900;font-size:1.15rem;text-transform:uppercase}
+.pm span{font-size:.85rem;opacity:.95}
+.pm.a{background:var(--green)} .pm.b{background:var(--pink)}
+.badge{display:inline-block;font-weight:900;letter-spacing:.12em;font-size:.8rem;background:var(--ink);color:#fff;padding:8px 14px;border-radius:999px;margin-bottom:18px}
+.dates-note{margin-top:22px;font-weight:700;font-size:.9rem;color:var(--green-dk)}
+.hero .ph{min-height:520px;border-radius:32px}
+.hero-bottom{position:absolute;bottom:0;left:0;width:100%;height:120px}
+
+/* ABOUT */
+.about{background:var(--soft)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.places{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.places span{font-weight:800;font-size:.85rem;padding:10px 16px;border-radius:999px;background:#fff;border:2px solid var(--green);color:var(--green)}
+.big-quote{font-size:1.4rem;font-weight:800;margin-top:10px}
+.big-quote .script{font-size:2rem;color:var(--pink)}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:30px 0 40px}
+.step{background:#fff;border-radius:24px;padding:24px;border:2px solid var(--line);position:relative}
+.step .n{font-weight:900;font-size:2.8rem;color:var(--green);line-height:1}
+.step h3{font-size:1.05rem;margin:12px 0 8px}
+.step p{color:var(--muted);font-size:.92rem}
+.step .ph{min-height:120px;margin-bottom:16px;border-radius:16px}
+
+/* PRIZES */
+.prizes{background:var(--ink);color:#fff;overflow:hidden}
+.prizes .eyebrow{color:var(--pink)}
+.prize-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.prize{border-radius:32px;padding:32px;position:relative;overflow:hidden}
+.prize.a{background:var(--green)} .prize.b{background:var(--orange)}
+.prize .lbl{font-weight:800;letter-spacing:.15em;font-size:.8rem;opacity:.9}
+.prize h3{font-size:clamp(1.8rem,4vw,2.6rem);margin:8px 0 4px}
+.prize .item{font-family:"Dancing Script",cursive;font-size:2.4rem;line-height:1.1}
+.prize p{margin:16px 0;opacity:.95}
+.prize .ph{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5);color:#fff;min-height:220px;margin-top:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:rgba(0,0,0,.18);padding:6px 12px;border-radius:999px;font-weight:700;font-size:.8rem}
+
+/* CRITERIA */
+.crit{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.c{border-radius:24px;padding:26px;color:#fff}
+.c:nth-child(1){background:var(--orange)} .c:nth-child(2){background:var(--green)}
+.c:nth-child(3){background:var(--pink)} .c:nth-child(4){background:var(--purple)}
+.c h3{font-size:1.15rem;margin-bottom:10px}
+.c h3::before{content:"✦ "}
+
+/* TIMELINE */
+.timeline{background:var(--soft)}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.tl-item{background:#fff;border-radius:24px;padding:28px;border-top:8px solid var(--green)}
+.tl-item:nth-child(2){border-color:var(--orange)} .tl-item:nth-child(3){border-color:var(--pink)}
+.tl-item .d{font-weight:900;font-size:1.5rem;line-height:1.05}
+.tl-item .k{font-weight:800;letter-spacing:.15em;font-size:.8rem;color:var(--purple);margin:10px 0 6px}
+.tl-item p{color:var(--muted);font-size:.92rem}
+
+/* FORM */
+.form-sec{background:linear-gradient(180deg,#fff 0 160px,var(--green) 160px,var(--green-dk) 100%)}
+.form-card{background:#fff;border-radius:32px;padding:clamp(24px,5vw,56px);box-shadow:0 30px 60px -20px rgba(0,0,0,.25);max-width:860px;margin:0 auto}
+.form-card h2{text-align:center}
+.form-card .intro{text-align:center;color:var(--muted);margin-bottom:34px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label.lb{font-weight:800;font-size:.85rem}
+label.lb i{color:var(--orange);font-style:normal}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=url],select{font:inherit;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:#fafafa;transition:border-color .15s,background .15s;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--orange);background:#fff}
+input:user-invalid,select:user-invalid{border-color:#d93030}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:.92rem;cursor:pointer}
+.check input{accent-color:var(--green);width:20px;height:20px;margin-top:2px;flex:none}
+.minor{grid-column:1/-1;display:none;background:var(--soft);border-radius:18px;padding:20px;border:2px dashed var(--orange)}
+.minor.on{display:grid;gap:14px}
+.minor h4{font-weight:900;text-transform:uppercase;font-size:.9rem;color:var(--orange)}
+.submit-row{grid-column:1/-1;text-align:center;margin-top:12px}
+.ok{display:none;text-align:center;padding:30px 0}
+.ok.on{display:block}
+.ok .heart{font-size:3.5rem;color:var(--orange)}
+.err{color:#d93030;font-weight:700;text-align:center;margin-top:10px;display:none}
+
+footer{background:var(--green-dk);color:#fff;text-align:center;padding:40px 20px}
+footer .logo-w{width:220px;height:auto;margin:0 auto;filter:brightness(0) invert(1)}
+
+/* Reveal on scroll */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:900px){
+  .hero-grid,.about-grid,.prize-grid{grid-template-columns:1fr}
+  .about-grid > .ph{order:2}
+  .steps,.crit{grid-template-columns:1fr 1fr}
+  .tl{grid-template-columns:1fr}
+  .hero .ph{min-height:360px}
+}
+.sticky-cta{display:none;position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;transition:transform .3s,opacity .3s}
+.sticky-cta .btn{box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.sticky-cta.hide{transform:translateY(140%);opacity:0;pointer-events:none}
+@media (max-width:560px){
+  section{padding:56px 0}
+  .wrap{padding:0 16px}
+  h2{margin-bottom:18px}
+  .btn{width:100%;justify-content:center;padding:16px 24px}
+  .grid2,.prizes-mini,.crit{grid-template-columns:1fr}
+  .ph{min-height:200px;border-radius:20px}
+
+  /* Hero: cinta arriba del logo, no encima */
+  .hero{padding:84px 0 96px}
+  .hero .ribbon{height:70px}
+  .brand img{width:210px}
+  .hero-grid{margin-top:28px;gap:28px}
+  .hero h1{font-size:clamp(2.3rem,12vw,3.2rem)}
+  .hero .lead{font-size:1.25rem;margin:16px 0 8px}
+  .prizes-mini{gap:10px;margin-bottom:24px}
+  .pm{padding:14px 16px;display:flex;flex-direction:column}
+  .dates-note{text-align:center}
+  .hero .ph{min-height:340px}
+  .hero-bottom{height:70px}
+
+  /* Pasos: ícono a la izquierda, texto a la derecha */
+  .steps{grid-template-columns:1fr;gap:12px;margin:20px 0 30px}
+  .step{display:grid;grid-template-columns:76px 1fr;column-gap:16px;align-items:start;padding:18px}
+  .step .ph{grid-row:1/4;min-height:76px;height:76px;margin:0;font-size:.65rem;padding:4px}
+  .step .n{font-size:1.6rem}
+  .step h3{margin:4px 0 4px}
+
+  .prize{padding:24px;border-radius:24px}
+  .prize .item{font-size:2rem}
+  .prize .ph{min-height:180px}
+  .c{padding:20px}
+  .tl-item{padding:22px}
+  .places span{font-size:.8rem;padding:8px 14px}
+  .big-quote{font-size:1.2rem}
+  .big-quote .script{font-size:1.7rem}
+  .form-card{border-radius:24px}
+
+  /* Botón fijo para inscribirse */
+  .sticky-cta{display:block}
+  footer{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<!-- 01 HERO -->
+<header class="hero">
+  <svg class="ribbon" style="top:14px" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+    <!-- Arco por encima del logo, baja hacia la derecha -->
+    <path d="M0 40 C 200 0, 450 0, 650 45 S 1100 95, 1440 40" fill="none" stroke="#2a8a2e" stroke-width="6"/>
+    <path d="M0 54 C 200 14, 450 14, 650 59 S 1100 109, 1440 54" fill="none" stroke="#e8641c" stroke-width="6"/>
+  </svg>
+  <div class="wrap">
+    <div class="brand">
+      <img src="img/logo.webp" alt="Fundación Jhoa Chong Qui — Juntos hacemos otro amanecer" width="2000" height="930">
+    </div>
+
+    <div class="hero-grid">
+      <div class="rv">
+        <span class="badge">🏆 2 GANADORES · 2 PREMIOS</span>
+        <h1>Jóvenes reporteros <span class="l2">quevedeños</span></h1>
+        <p class="lead">Tu comunidad tiene una historia.<br><em>Tú puedes contarla.</em></p>
+        <p class="sub">Graba un video sobre una situación, historia o realidad de tu comunidad, sector, parroquia o recinto y participa por increíbles premios.</p>
+        <div class="prizes-mini">
+          <div class="pm a"><b>📱 iPhone</b><span>Para el video más creativo, elegido por nuestro jurado.</span></div>
+          <div class="pm b"><b>🎥 Kit audiovisual</b><span>Para el video más viral, elegido por el público.</span></div>
+        </div>
+        <a href="#inscripcion" class="btn">Quiero participar ♥</a>
+        <p class="dates-note">Inscripciones abiertas del 8 al 15 de octubre</p>
+      </div>
+      <div class="ph rv">IMAGEN HERO<br>(foto vertical de la vocera / joven reportero)</div>
+    </div>
+  </div>
+  <svg class="hero-bottom" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 60 C 400 0, 900 120, 1440 30 L1440 120 L0 120Z" fill="#fff6f0"/>
+    <path d="M0 60 C 400 0, 900 120, 1440 30" fill="none" stroke="#ff5aa5" stroke-width="5"/>
+  </svg>
+</header>
+
+<!-- 02 ¿DE QUÉ SE TRATA? -->
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="ph rv">IMAGEN<br>(joven grabando en su barrio / parroquia)</div>
+    <div class="rv">
+      <p class="eyebrow">¿De qué se trata?</p>
+      <h2>Tu comunidad.<br><span class="g">Tu mirada.</span><br><span class="tag">Tu historia.</span></h2>
+      <p>Queremos conocer Quevedo a través de tus ojos. Busca una situación real que afecte o interese a tu comunidad y cuéntala en video con tu propio estilo.</p>
+      <p style="margin-top:14px;font-weight:700">Puede ser algo de:</p>
+      <div class="places"><span>Tu parroquia</span><span>Tu sector</span><span>Tu barrio</span><span>Tu recinto</span></div>
+      <p class="big-quote">No necesitas ser periodista.<br><span class="script">Necesitas tener algo que contar.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ¿CÓMO PARTICIPAR? -->
+<section class="about">
+  <div class="wrap">
+    <p class="eyebrow rv">¿Cómo participar?</p>
+    <h2 class="rv">Es muy <span class="p">fácil</span></h2>
+    <div class="steps">
+      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">01</div><h3>Encuentra una historia</h3><p>Identifica una situación real de tu comunidad que merezca ser conocida.</p></div>
+      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">02</div><h3>Graba tu video</h3><p>Cuéntala con creatividad, personalidad y tu propio estilo.</p></div>
+      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">03</div><h3>Inscríbete</h3><p>Completa tus datos y envía el enlace de tu video.</p></div>
+      <div class="step rv"><div class="ph">ÍCONO</div><div class="n">04</div><h3>Participa</h3><p>Tu video podrá llegar a la selección final y competir por uno de los dos premios.</p></div>
+    </div>
+    <div style="text-align:center"><a href="#inscripcion" class="btn">Inscribirme</a></div>
+  </div>
+</section>
+
+<!-- 04 PREMIOS -->
+<section class="prizes">
+  <div class="wrap">
+    <p class="eyebrow rv">Los premios</p>
+    <h2 class="rv">Dos formas<br>de <span class="o">ganar</span></h2>
+    <div class="prize-grid">
+      <article class="prize a rv">
+        <span class="lbl">🏆 PREMIO 01</span>
+        <h3>El más creativo</h3>
+        <div class="item">iPhone 📱</div>
+        <p>El video que destaque por su creatividad, originalidad y forma de contar la historia será seleccionado por el jurado.</p>
+        <p style="font-weight:800;margin-bottom:8px">¿Qué buscamos?</p>
+        <div class="chips"><span>Creatividad</span><span>Edición</span><span>Narrativa</span><span>Desenvolvimiento</span></div>
+        <div class="ph">IMAGEN iPHONE</div>
+      </article>
+      <article class="prize b rv">
+        <span class="lbl">🔥 PREMIO 02</span>
+        <h3>El más viral</h3>
+        <div class="item">Kit audiovisual 🎥</div>
+        <p>El video que consiga mayor impacto y participación del público tendrá la oportunidad de llevarse un kit audiovisual.</p>
+        <p style="font-weight:800">Haz que tu historia llegue a más personas.</p>
+        <div class="ph">IMAGEN KIT AUDIOVISUAL</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CRITERIOS -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">¿Qué vamos a evaluar?</p>
+    <h2 class="rv">No tienes que ser un experto.<br><span class="g">Tienes que ser creativo.</span></h2>
+    <div class="crit">
+      <div class="c rv"><h3>Creatividad</h3><p>Una idea original y una forma diferente de contarla.</p></div>
+      <div class="c rv"><h3>Edición</h3><p>Ritmo, cortes, música, textos y recursos que hagan atractivo tu video.</p></div>
+      <div class="c rv"><h3>Desenvolvimiento</h3><p>Naturalidad, personalidad y capacidad para transmitir tu mensaje.</p></div>
+      <div class="c rv"><h3>Impacto</h3><p>Que la historia genere interés y conecte con quienes la ven.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 FECHAS -->
+<section class="timeline" hidden>
+  <div class="wrap">
+    <p class="eyebrow rv">📅 Marca estas fechas</p>
+    <h2 class="rv">Fechas <span class="o">clave</span></h2>
+    <div class="tl">
+      <div class="tl-item rv"><div class="d">8 — 15<br>octubre</div><div class="k">INSCRIPCIONES</div><p>Envía tus datos y el enlace de tu video.</p></div>
+      <div class="tl-item rv"><div class="d">15 oct —<br>10 nov</div><div class="k">SELECCIÓN</div><p>Revisión y selección de los videos participantes.</p></div>
+      <div class="tl-item rv"><div class="d">13<br>noviembre</div><div class="k">PREMIACIÓN 🏆</div><p>Conoceremos a los dos ganadores.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section class="form-sec" id="inscripcion">
+  <div class="wrap">
+    <div class="form-card">
+      <form id="f" novalidate>
+        <p class="eyebrow" style="text-align:center">Formulario de inscripción</p>
+        <h2>Inscríbete <span class="o">aquí</span></h2>
+        <p class="intro">Completa tus datos y envía el enlace de tu video de TikTok.</p>
+
+        <div class="grid2">
+          <div class="field full"><label class="lb" for="nombre">Nombres y apellidos <i>*</i></label><input id="nombre" name="nombre" type="text" required autocomplete="name"></div>
+          <div class="field"><label class="lb" for="edad">Edad <i>*</i></label><input id="edad" name="edad" type="number" min="10" max="99" required inputmode="numeric"></div>
+          <div class="field"><label class="lb" for="telefono">Número de teléfono <i>*</i></label><input id="telefono" name="telefono" type="tel" required autocomplete="tel" placeholder="09XXXXXXXX" pattern="[0-9+ ]{7,15}"></div>
+          <div class="field"><label class="lb" for="correo">Correo electrónico <i>*</i></label><input id="correo" name="correo" type="email" required autocomplete="email"></div>
+          <div class="field"><label class="lb" for="sector">Sector o parroquia <i>*</i></label><input id="sector" name="sector" type="text" required></div>
+          <div class="field"><label class="lb" for="tiktok">Usuario de TikTok <i>*</i></label><input id="tiktok" name="tiktok" type="text" required placeholder="@tuusuario"></div>
+          <div class="field"><label class="lb" for="video">Enlace del video <i>*</i></label><input id="video" name="video" type="url" required placeholder="https://www.tiktok.com/@..."></div>
+
+
+          <div class="minor" id="minor">
+            <h4>Eres menor de edad: autorización del representante</h4>
+            <div class="grid2">
+              <div class="field"><label class="lb" for="rep_nombre">Nombre del representante <i>*</i></label><input id="rep_nombre" name="rep_nombre" type="text"></div>
+              <div class="field"><label class="lb" for="rep_cedula">Cédula del representante <i>*</i></label><input id="rep_cedula" name="rep_cedula" type="text" inputmode="numeric" pattern="[0-9]{10}" placeholder="10 dígitos"></div>
+            </div>
+            <label class="check"><input type="checkbox" id="rep_auth" name="rep_auth" value="Sí"> Como representante legal, autorizo la participación del menor en el concurso.</label>
+          </div>
+
+          <div class="field full">
+            <label class="check"><input type="checkbox" name="autorizacion" value="Sí" required> Autorizo a la Fundación Jhoa Chong Qui a republicar mi contenido dentro de la comunicación del concurso. <i style="color:var(--orange);font-style:normal">*</i></label>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn" type="submit" id="send">Enviar inscripción ♥</button>
+            <p class="err" id="err">Revisa los campos marcados en rojo.</p>
+          </div>
+        </div>
+      </form>
+
+      <div class="ok" id="ok" role="status">
+        <div class="heart">♥</div>
+        <h2>¡Ya estás <span class="g">inscrito!</span></h2>
+        <p class="intro">Gracias por contar la historia de tu comunidad. Te contactaremos por WhatsApp o correo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-cta hide" id="sticky"><a href="#inscripcion" class="btn">Quiero participar ♥</a></div>
+
+<footer>
+  <img class="logo-w" src="img/logo.webp" alt="Fundación Jhoa Chong Qui" width="2000" height="930">
+  <p style="margin-top:10px;opacity:.85">Quevedo comienza con UNO ♥</p>
+</footer>
+
+<iframe name="gf_target" hidden></iframe>
+
+<script>
+/* ===== CONFIGURACIÓN GOOGLE FORMS =====
+   1. Crea el Google Form con estas preguntas.
+   2. Menú ⋮ > "Obtener enlace prellenado", llena cualquier cosa y copia el enlace:
+      verás ...?entry.123456=xxx&entry.789012=yyy → esos son los IDs.
+   3. Pega el ID del form (lo que va entre /d/e/ y /viewform) y cada entry abajo. */
+const GOOGLE_FORM_ID = 'PEGAR_ID_DEL_FORM';
+const ENTRIES = {
+  nombre:      'entry.0000000001',
+  edad:        'entry.0000000002',
+  telefono:    'entry.0000000003',
+  correo:      'entry.0000000004',
+  sector:      'entry.0000000005',
+  tiktok:      'entry.0000000006',
+  video:       'entry.0000000008',
+  autorizacion:'entry.0000000009',
+  rep_nombre:  'entry.0000000010',
+  rep_cedula:  'entry.0000000011',
+  rep_auth:    'entry.0000000012',
+};
+
+const f = document.getElementById('f');
+const minor = document.getElementById('minor');
+const edad = document.getElementById('edad');
+const repFields = ['rep_nombre','rep_cedula','rep_auth'].map(id => document.getElementById(id));
+
+edad.addEventListener('input', () => {
+  const isMinor = edad.value !== '' && +edad.value < 18;
+  minor.classList.toggle('on', isMinor);
+  repFields.forEach(el => el.required = isMinor);
+});
+
+f.addEventListener('submit', e => {
+  e.preventDefault();
+  const err = document.getElementById('err');
+  if (!f.checkValidity()) { err.style.display = 'block'; f.reportValidity(); return; }
+  err.style.display = 'none';
+
+  // Formulario oculto que publica al Google Form (sin CORS) vía iframe
+  const gf = document.createElement('form');
+  gf.action = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+  gf.method = 'POST';
+  gf.target = 'gf_target';
+  const data = new FormData(f);
+  for (const [key, entry] of Object.entries(ENTRIES)) {
+    const v = data.get(key);
+    if (v == null || v === '') continue;
+    const i = document.createElement('input');
+    i.type = 'hidden'; i.name = entry; i.value = v;
+    gf.appendChild(i);
+  }
+  document.body.appendChild(gf);
+  gf.submit();
+  gf.remove();
+
+  f.style.display = 'none';
+  document.getElementById('ok').classList.add('on');
+  document.getElementById('inscripcion').scrollIntoView();
+});
+
+// Botón fijo: aparece tras el hero, se oculta en el formulario
+const sticky = document.getElementById('sticky');
+let pastHero = false, atForm = false;
+const upd = () => sticky.classList.toggle('hide', !pastHero || atForm);
+new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; upd(); }).observe(document.querySelector('.hero .btn'));
+new IntersectionObserver(([e]) => { atForm = e.isIntersecting; upd(); }).observe(document.getElementById('inscripcion'));
+
+// Animación al hacer scroll
+const io = new IntersectionObserver(es => es.forEach(x => {
+  if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); }
+}), {threshold:.12});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
